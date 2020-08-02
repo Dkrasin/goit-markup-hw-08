@@ -1,0 +1,71 @@
+/* Clients */
+.clients {
+  & .title {
+    @extend %title;
+    margin-bottom: 30px;
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 50px;
+    }
+  }
+  &.list {
+    @extend %list;
+    @media screen and (min-width: 480px) {
+      @include flex(flex);
+      flex-wrap: wrap;
+      margin: -15px;
+    }
+  }
+
+  &-item {
+    max-width: 210px;
+    &:not(:last-child) {
+      @media screen and (max-width: 479px) {
+        margin-bottom: 10px;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      margin: 0 auto;
+    }
+    @media screen and (min-width: 480px) {
+      width: calc((100% - 4 * 15px) / 2);
+      margin: 15px;
+    }
+    @media screen and (min-width: 768px) {
+      width: calc((100% - 6 * 15px) / 3);
+      max-width: 226px;
+    }
+    @media screen and (min-width: 1200px) {
+      width: calc((100% - 12 * 15px) / 6);
+      max-width: 170px;
+    }
+  }
+}
+
+.clients-item-link {
+  @extend %centred-items;
+  border: 1px solid #afb1b8;
+  border-radius: 4px;
+  height: 90px;
+  width: 100%;
+
+  transition: $animation;
+
+  &:hover,
+  &:focus {
+    border-color: $active-color;
+    transform: scale(1.1);
+  }
+}
+
+.clients-logo {
+  fill: $clients-logo-fill-color;
+
+  transition: $animation;
+
+  .clients-item-link:hover &,
+  .clients-item-link:focus & {
+    fill: $active-color;
+  }
+}
